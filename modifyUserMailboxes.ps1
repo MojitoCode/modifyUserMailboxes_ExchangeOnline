@@ -1,5 +1,5 @@
-#Purpose: This program is used to modify the members lists of a few mailboxes in AD
-# !! personalized mailboxes have been removed, and replaced with a the “$targetEmail” placeholder !!
+#Purpose: This program is used to modify the members lists of a few mailboxes in Exchange Online
+# !! “$targetEmail” is a placeholder in this case - replace with target mailbox or a read-host command can be added to assign a value to this variable !!
 
 #Author: SKelly
 #Date: 6/6/2024
