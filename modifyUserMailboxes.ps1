@@ -1,8 +1,8 @@
 #Purpose: This program is used to modify the members lists of a few mailboxes in AD
 # !! personalized mailboxes have been removed, and replaced with a the “$targetEmail” placeholder !!
 
-#Author: Sam Kelly
-#Date: 4/29/2024
+#Author: SKelly
+#Date: 6/6/2024
 
  
 #FUNCTION DEFINITIONS
@@ -17,12 +17,6 @@ param(
     	[string]$UserEmail
 	)
 
-	
-	  Add-MailboxPermission -Identity $targetEmail -User $UserEmail -AccessRights FullAccess
-    Add-MailboxPermission -Identity $targetEmail -User $UserEmail -AccessRights FullAccess
-    Add-MailboxPermission -Identity $targetEmail -User $UserEmail -AccessRights FullAccess
-    Add-MailboxPermission -Identity $targetEmail -User $UserEmail -AccessRights FullAccess
-	  Add-MailboxPermission -Identity $targetEmail -User $UserEmail -AccessRights FullAccess
     Add-MailboxPermission -Identity $targetEmail -User $UserEmail -AccessRights FullAccess
     
 }
@@ -31,16 +25,10 @@ function RemoveUserFromSharedMailbox
 {
 	#PARAMETER DEFINITIONS
 	param(
-    	#this parameter accepts a user's email address to remove from the six mailboxes
     	[Parameter(Mandatory=$true, Position=0)]
     	[string]$UserEmail
 	)
 	
-    Remove-MailboxPermission -Identity $targetEmail -User $UserEmail -AccessRights FullAccess -Confirm:$FALSE -InheritanceType All
-    Remove-MailboxPermission -Identity $targetEmail -User $UserEmail -AccessRights FullAccess -Confirm:$FALSE -InheritanceType All
-	  Remove-MailboxPermission -Identity $targetEmail -User $UserEmail -AccessRights FullAccess -Confirm:$FALSE -InheritanceType All
-    Remove-MailboxPermission -Identity $targetEmail -User $UserEmail -AccessRights FullAccess -Confirm:$FALSE -InheritanceType All
-    Remove-MailboxPermission -Identity $targetEmail -User $UserEmail -AccessRights FullAccess -Confirm:$FALSE -InheritanceType All
     Remove-MailboxPermission -Identity $targetEmail -User $UserEmail -AccessRights FullAccess -Confirm:$FALSE -InheritanceType All
     
 }
@@ -48,18 +36,10 @@ function RemoveUserFromSharedMailbox
 function VerifyMailboxPermissions
 {
 	param(
-    	#The first parameter accepts a user's email address to add to the six mailboxes
     	[Parameter(Mandatory=$true, Position=0)]
     	[string]$UserEmail
 	)
     
-    Get-Mailbox $targetEmail | Get-MailboxPermission | Where-Object { $_.AccessRights -like '*FullAccess*' } | Select-Object Identity, User, AccessRights | where user -like $UserEmail
-    Get-Mailbox $targetEmail | Get-MailboxPermission | Where-Object { $_.AccessRights -like '*FullAccess*' } | Select-Object Identity, User, AccessRights | where user -like $UserEmail
-    
-    Get-Mailbox $targetEmail | Get-MailboxPermission | Where-Object { $_.AccessRights -like '*FullAccess*' } | Select-Object Identity, User, AccessRights | where user -like $UserEmail
-    Get-Mailbox $targetEmail | Get-MailboxPermission | Where-Object { $_.AccessRights -like '*FullAccess*' } | Select-Object Identity, User, AccessRights | where user -like $UserEmail
-    
-    Get-Mailbox $targetEmail | Get-MailboxPermission | Where-Object { $_.AccessRights -like '*FullAccess*' } | Select-Object Identity, User, AccessRights | where user -like $UserEmail
     Get-Mailbox $targetEmail | Get-MailboxPermission | Where-Object { $_.AccessRights -like '*FullAccess*' } | Select-Object Identity, User, AccessRights | where user -like $UserEmail
 }
  
@@ -68,16 +48,9 @@ function WelcomeMessage
 {
 	Write-Host "Welcome!"
 	Write-Host " "
-	Write-Host "This Program is Used to Update the Mailbox Members For the Following Shared Mailboxes:"
+	Write-Host "This Program is Used to Update the Mailbox Members For the Following Shared Mailbox:"
 	Write-Host " "
 	Write-Host " "
-	Write-Host " - $targetEmail
-	Write-Host " - $targetEmail
-	Write-Host " "
-	Write-Host " - $targetEmail
-	Write-Host " - $targetEmail
-	Write-Host " "
-	Write-Host " - $targetEmail
 	Write-Host " - $targetEmail
 	Write-Host " "
 	Write-Host "_____________________________________________________________________________________ "
